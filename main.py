@@ -3,7 +3,7 @@ import random
 
 
 def getMap(num: int,limit:list) -> list:
-    # num为随机次数 应传入int 确保传入值<14 否则返回 -1
+    # num为随机次数 应传入int 确保传入值<14 否则返回 -1 
     # limit为地图限制 应传入list 传入limit的地图将不再被随机 无限制时传入[]
     # 此函数返回值为list
 
