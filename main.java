@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MapGenerator {
+public class main {
     public static List<String> getMap(int num, List<String> limit) {
         List<String> mapL = new ArrayList<>();
         mapL.add("绿地");
