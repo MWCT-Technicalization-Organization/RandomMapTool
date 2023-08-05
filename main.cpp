@@ -4,18 +4,18 @@
 #include <algorithm>
 
 std::vector<std::string> getMap(int num, std::vector<std::string> limit) {
-    std::vector<std::string> mapL = { "ÂÌµØ", "·ç±©", "Î´¿ª·¢ÑÒÊ¯Çø", "±±¼«È¦", "Ê§ÂäÖ®³Ç", "±ùµº", "Î¬¾©Íå", "ÑÒ·å" };
+    std::vector<std::string> mapL = { "ç»¿åœ°", "é£æš´", "æœªå¼€å‘å²©çŸ³åŒº", "åŒ—æåœˆ", "å¤±è½ä¹‹åŸ", "å†°å²›", "ç»´äº¬æ¹¾", "å²©å³°" };
     std::vector<std::string> maps;
 
     if (num > 13) {
-        return { -1 }; // ·µ»ØÖµÎª-1±íÊ¾Ëæ»ú´ÎÊı³¬¹ıÏŞÖÆ
+        return { "-1" }; // è¿”å›å€¼ä¸º-1è¡¨ç¤ºéšæœºæ¬¡æ•°è¶…è¿‡é™åˆ¶
     }
     else {
         if (!limit.empty()) {
             for (const std::string& i : limit) {
                 auto it = std::find(mapL.begin(), mapL.end(), i);
                 if (it != mapL.end()) {
-                    mapL.erase(it); // É¾³ı½ûÓÃµÄµØÍ¼
+                    mapL.erase(it); // åˆ é™¤ç¦ç”¨çš„åœ°å›¾
                 }
             }
         }
@@ -27,10 +27,10 @@ std::vector<std::string> getMap(int num, std::vector<std::string> limit) {
             for (int i = 0; i < num; ++i) {
                 std::uniform_int_distribution<> dis(0, mapL.size() - 1);
                 int index = dis(gen);
-                std::string rdMap = mapL[index]; // ´ÓÊ£ÓàµØÍ¼ÖĞËæ»úÑ¡Ôñ
+                std::string rdMap = mapL[index]; // ä»å‰©ä½™åœ°å›¾ä¸­éšæœºé€‰æ‹©
                 maps.push_back(rdMap);
-                mapL.erase(mapL.begin() + index); // É¾³ıÒÑÑ¡ÔñµÄµØÍ¼£¬±ÜÃâÖØ¸´
-                std::shuffle(mapL.begin(), mapL.end(), gen); // ´òÂÒµØÍ¼Ë³Ğò
+                mapL.erase(mapL.begin() + index); // åˆ é™¤å·²é€‰æ‹©çš„åœ°å›¾ï¼Œé¿å…é‡å¤
+                std::shuffle(mapL.begin(), mapL.end(), gen); // æ‰“ä¹±åœ°å›¾é¡ºåº
             }
 
             return maps;
@@ -42,8 +42,8 @@ std::vector<std::string> getMap(int num, std::vector<std::string> limit) {
             for (int i = 0; i < num; ++i) {
                 std::uniform_int_distribution<> dis(0, mapL.size() - 1);
                 int index = dis(gen);
-                maps.push_back(mapL[index]); // ´ÓÊ£ÓàµØÍ¼ÖĞËæ»úÑ¡Ôñ
-                std::shuffle(mapL.begin(), mapL.end(), gen); // ´òÂÒµØÍ¼Ë³Ğò
+                maps.push_back(mapL[index]); // ä»å‰©ä½™åœ°å›¾ä¸­éšæœºé€‰æ‹©
+                std::shuffle(mapL.begin(), mapL.end(), gen); // æ‰“ä¹±åœ°å›¾é¡ºåº
             }
 
             return maps;
@@ -52,13 +52,13 @@ std::vector<std::string> getMap(int num, std::vector<std::string> limit) {
 }
 
 int main() {
-    int num = 5; // Ëæ»ú´ÎÊı
-    std::vector<std::string> limit = { "ÂÌµØ", "Ê§ÂäÖ®³Ç" }; // ½ûÓÃµÄµØÍ¼ÁĞ±í
+    int num = 5; // éšæœºæ¬¡æ•°
+    std::vector<std::string> limit = { "ç»¿åœ°", "å¤±è½ä¹‹åŸ" }; // ç¦ç”¨çš„åœ°å›¾åˆ—è¡¨
 
-    std::vector<std::string> result = getMap(num, limit); // »ñÈ¡Ëæ»úµØÍ¼
+    std::vector<std::string> result = getMap(num, limit); // è·å–éšæœºåœ°å›¾
 
     for (const std::string& map : result) {
-        std::cout << map << std::endl; // Êä³öËæ»úµØÍ¼
+        std::cout << map << std::endl; // è¾“å‡ºéšæœºåœ°å›¾
     }
 
     return 0;
